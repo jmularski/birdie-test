@@ -1,8 +1,6 @@
-import app from './application';
+import app from "./application";
+import * as http from "http";
 
 const port = process.env.PORT || 8000;
 
-app.listen(port, () => {
-  // tslint:disable-next-line:no-console
-  console.log(`Server started at http://localhost:${port}`);
-});
+http.createServer(app).listen(port);
