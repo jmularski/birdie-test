@@ -9,7 +9,10 @@ import {
   Unique
 } from "sequelize-typescript";
 
-@Table
+@Table({
+  tableName: "events",
+  timestamps: false
+})
 export default class Event extends Model<Event> {
   @PrimaryKey
   @Default(DataType.UUIDV4)
@@ -34,7 +37,4 @@ export default class Event extends Model<Event> {
   @Unique
   @Column
   public care_recipient_id!: string;
-
-  @Column
-  public mood?: string;
 }
