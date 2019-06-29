@@ -2,9 +2,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@App/*": [
-        "src/*"
-      ]
+      "@App/*": ["src/*"],
+      "@store/*": ["src/store/*"]
     },
     "outDir": "build/dist",
     "module": "esnext",

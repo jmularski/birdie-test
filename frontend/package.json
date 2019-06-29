@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.19.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts-redux-ts": "1.2.1",
-    "redux-saga": "^1.0.2",
+    "redux-saga": "^1.0.4",
     "styled-components": "^4.2.0"
   },
   "scripts": {
@@ -20,7 +21,8 @@
   "jest": {
     "moduleNameMapper": {
       "^react-native$": "react-native-web",
-      "@App/(.*)": "<rootDir>/src/$1"
+      "@App/(.*)": "<rootDir>/src/$1",
+      "@store/(.*)": "<rootDir>/src/store/$1"
     }
   },
   "devDependencies": {
