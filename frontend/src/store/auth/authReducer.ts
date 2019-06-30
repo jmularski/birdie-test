@@ -7,9 +7,9 @@ const initialState: AuthState = {
   isFetching: false
 };
 
-export const authReducer: Reducer<AuthState> = (
-  state: AuthState = initialState,
-  action: AuthActionTypes
+export const authReducer: Reducer<AuthState, AuthActionTypes> = (
+  state = initialState,
+  action
 ) => {
   switch (action.type) {
     case authActions.SIGN_IN:
@@ -20,13 +20,14 @@ export const authReducer: Reducer<AuthState> = (
     case authActions.AUTHENTICATION_SUCCESS:
       return {
         ...state,
-        ...action.payload,
+        token: action.payload.token,
         isFetching: false
       };
     case authActions.AUTHENTICATION_FAILURE:
+      console.log(action);
       return {
         ...state,
-        ...action.payload,
+        error: action.payload.error,
         isFetching: false
       };
     default:

@@ -12,7 +12,8 @@ function* signIn(action: string, payload: Id) {
       yield put(authFailure(response.data));
     }
   } catch (e) {
-    yield put(authFailure(e.response.data.error));
+    // yield put(authFailure({ error: e.response.data.error }));
+    yield put(authFailure({ error: e.message }));
   }
 }
 
