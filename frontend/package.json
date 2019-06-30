@@ -3,10 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.0.0-rc.0",
+    "axios": "^0.19.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-redux": "^7.1.0",
     "react-scripts-redux-ts": "1.2.1",
-    "redux-saga": "^1.0.2",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-saga": "^1.0.4",
     "styled-components": "^4.2.0"
   },
   "scripts": {
@@ -20,7 +25,8 @@
   "jest": {
     "moduleNameMapper": {
       "^react-native$": "react-native-web",
-      "@App/(.*)": "<rootDir>/src/$1"
+      "@App/(.*)": "<rootDir>/src/$1",
+      "@store/(.*)": "<rootDir>/src/store/$1"
     }
   },
   "devDependencies": {
@@ -29,8 +35,9 @@
     "@types/node": "^12.0.1",
     "@types/react": "^16.8.17",
     "@types/react-dom": "^16.8.4",
-    "@types/react-redux": "^7.0.9",
+    "@types/react-redux": "^7.1.1",
     "@types/redux": "^3.6.0",
+    "@types/redux-logger": "^3.0.7",
     "@types/styled-components": "^4.1.15",
     "typescript": "^3.4.5"
   }
