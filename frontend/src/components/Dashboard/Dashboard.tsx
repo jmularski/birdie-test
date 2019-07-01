@@ -1,4 +1,5 @@
 import * as React from "react";
+import Header from "../Header";
 
 export interface ComponentState {}
 
@@ -9,11 +10,11 @@ export interface DispatchProps {}
 type Props = StateProps & DispatchProps;
 
 export default class Dashboard extends React.Component<Props, ComponentState> {
-  constructor(props: Props) {
-    super(props);
-  }
-
   public render() {
-    return <div />;
+    return (
+      <>
+        <Header />
+      </>
+    );
   }
 }
