@@ -1,19 +1,20 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import { authActions, Id } from "./types";
+import { push } from "connected-react-router";
+import { authActions, SignIn } from "./types";
 import { authSuccess, authFailure } from "./authActions";
 import AuthService from "../../services/auth.service";
 
-function* signIn(action: string, payload: Id) {
+function* signIn(action: SignIn) {
   try {
-    const response = yield call(AuthService.signIn, payload);
+    const response = yield call(AuthService.signIn, action.payload);
     if (response.status === 200 || response.status === 201) {
       yield put(authSuccess(response.data));
+      yield put(push("/dashboard"));
     } else {
       yield put(authFailure(response.data));
     }
   } catch (e) {
-    // yield put(authFailure({ error: e.response.data.error }));
-    yield put(authFailure({ error: e.message }));
+    yield put(authFailure({ error: e.response.data.error }));
   }
 }
 

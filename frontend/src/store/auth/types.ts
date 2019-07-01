@@ -22,7 +22,7 @@ export interface AuthState {
   token: string;
 }
 
-interface SignIn {
+export interface SignIn {
   type: typeof authActions.SIGN_IN;
   payload: Id;
 }

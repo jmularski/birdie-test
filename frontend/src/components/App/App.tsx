@@ -38,25 +38,18 @@ export default class App extends React.Component<Props, ComponentState> {
     };
   }
 
-  handleCodeChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    this.setState({ id: event.target.value });
-
-  handleButtonClick = () => {
-    const { id } = this.state;
-    this.props.signIn({ id });
-  };
-
   public render() {
+    const { isFetching, error } = this.props;
     return (
       <>
         <GlobalStyle />
-        {this.props.isFetching ? <StyledCircularProgress /> : null}
+        {isFetching ? <StyledCircularProgress /> : null}
         <AppContainer isFetching={this.props.isFetching}>
           <StyledCard>
             <Title>Login to the service</Title>
             <Subtitle>Use code we gave you to login to the service</Subtitle>
             <TextField
-              error={this.props.error.length !== 0}
+              error={error.length !== 0}
               label="Code"
               placeholder="Code"
               value={this.state.id}
@@ -64,7 +57,7 @@ export default class App extends React.Component<Props, ComponentState> {
               margin="normal"
               variant="outlined"
             />
-            <ErrorText>{this.props.error}</ErrorText>
+            <ErrorText>{error}</ErrorText>
             <Button
               color="primary"
               variant="outlined"
@@ -77,4 +70,12 @@ export default class App extends React.Component<Props, ComponentState> {
       </>
     );
   }
+
+  private handleCodeChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+    this.setState({ id: event.target.value });
+
+  private handleButtonClick = () => {
+    const { id } = this.state;
+    this.props.signIn({ id });
+  };
 }

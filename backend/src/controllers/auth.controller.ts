@@ -15,7 +15,7 @@ authController.post("/login", async (req: Request, res: Response) => {
   }
 
   // naming this variable user cause I need to make all the other requests by some param
-  const user: Event = await Event.findOne({ where: { care_recipient_id: id } });
+  const user = await Event.findOne({ where: { care_recipient_id: id } });
 
   if (!user) {
     return res.status(400).json({

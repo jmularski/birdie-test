@@ -12,7 +12,7 @@ const mapStateToProps = (state: AppState): StateProps => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
-  signIn: (code: Id) => dispatch(signIn(code))
+  signIn: (id: Id) => dispatch(signIn(id))
 });
 
 export default connect(
