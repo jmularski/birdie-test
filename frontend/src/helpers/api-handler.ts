@@ -13,7 +13,10 @@ interface Options {
 }
 
 export const request = async (options: Options) => {
-  const BASE_URL = "http://localhost:8000";
+  console.log(process.env.BACKEND_URL);
+  const BASE_URL = process.env.BACKEND_URL
+    ? process.env.BACKEND_URL
+    : "http://localhost:8000";
 
   const headers: Headers = {
     "Content-Type": "application/json"

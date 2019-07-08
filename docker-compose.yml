@@ -1,0 +1,22 @@
+version: "2"
+services:
+  backend:
+    container_name: backend
+    restart: always
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile
+    ports:
+      - "8000:8000"
+  frontend:
+    container_name: frontend
+    restart: always
+    build:
+      context: ./frontend
+      dockerfile: ./Dockerfile
+    ports:
+      - "5000:3000"
+    links:
+      - backend
+    environment:
+      - BACKEND_URL=https://backend:8000
