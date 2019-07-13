@@ -4,7 +4,7 @@ export enum statisticsActions {
   GET_HISTORY_FAILURE = "GET_HISTORY_FAILURE"
 }
 
-interface EventItem {
+export interface EventItem {
   event_type: string;
   timestamp: Date;
 }
@@ -17,7 +17,7 @@ export interface Error {
   error: string;
 }
 
-interface EventsState extends Events {
+export interface EventsState extends Events {
   isFetching: boolean;
   error: string;
 }

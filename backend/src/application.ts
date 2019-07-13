@@ -22,9 +22,10 @@ const app = express();
 app.use(cors());
 app.use(helmet());
 app.use(bodyParser.json());
-app.use(errorMiddleware);
 
 app.use("/auth", authController);
 app.use("/stats", statisticsController);
+
+app.use(errorMiddleware);
 
 export default app;

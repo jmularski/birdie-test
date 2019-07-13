@@ -13,7 +13,6 @@ interface Options {
 }
 
 export const request = async (options: Options) => {
-  console.log(process.env.BACKEND_URL);
   const BASE_URL = process.env.BACKEND_URL
     ? process.env.BACKEND_URL
     : "http://localhost:8000";
@@ -23,7 +22,7 @@ export const request = async (options: Options) => {
   };
 
   if (options.authHeader) {
-    headers.Authorization = `JWT ${options.authHeader}`;
+    headers.Authorization = options.authHeader;
   }
 
   const client = axios.create({
