@@ -13,14 +13,16 @@ interface Options {
 }
 
 export const request = async (options: Options) => {
-  const BASE_URL = "http://localhost:8000";
+  const BASE_URL = process.env.BACKEND_URL
+    ? process.env.BACKEND_URL
+    : "http://localhost:8000";
 
   const headers: Headers = {
     "Content-Type": "application/json"
   };
 
   if (options.authHeader) {
-    headers.Authorization = `JWT ${options.authHeader}`;
+    headers.Authorization = options.authHeader;
   }
 
   const client = axios.create({

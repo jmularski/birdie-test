@@ -1,5 +1,5 @@
 import { Id } from "@store/auth/types";
-import { request } from "../helpers/api-handler";
+import { request } from "../helpers/api.handler";
 
 function signIn(id: Id) {
   return request({

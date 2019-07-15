@@ -1,11 +1,11 @@
 import * as React from "react";
 import {
   AppContainer,
-  ErrorText,
   GlobalStyle,
   StyledCard,
   StyledCircularProgress
 } from "./style";
+import { ErrorText } from "../ErrorText";
 import { TextField, Button } from "@material-ui/core";
 import { Id } from "@store/auth/types";
 import Title from "../Title";
@@ -49,7 +49,7 @@ export default class App extends React.Component<Props, ComponentState> {
             <Title>Login to the service</Title>
             <Subtitle>Use code we gave you to login to the service</Subtitle>
             <TextField
-              error={error.length !== 0}
+              error={error !== ""}
               label="Code"
               placeholder="Code"
               value={this.state.id}

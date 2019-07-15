@@ -7,6 +7,8 @@ import * as cors from "cors";
 
 import { Sequelize } from "sequelize-typescript";
 import { authController } from "./controllers/auth.controller";
+import { statisticsController } from "./controllers/statistics.controller";
+import errorMiddleware from "./middleware/error.middleware";
 
 const sequelize = new Sequelize("birdietest", "test-read", "xnxPp6QfZbCYkY8", {
   host: "birdie-test.cyosireearno.eu-west-2.rds.amazonaws.com",
@@ -22,5 +24,8 @@ app.use(helmet());
 app.use(bodyParser.json());
 
 app.use("/auth", authController);
+app.use("/stats", statisticsController);
+
+app.use(errorMiddleware);
 
 export default app;

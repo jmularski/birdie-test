@@ -38,8 +38,3 @@ export const StyledCircularProgress = styled(CircularProgress)`
   position: absolute;
   z-index: 999;
 `;
-
-export const ErrorText = styled.p`
-  color: red;
-  font-size: 12;
-`;

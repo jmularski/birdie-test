@@ -11,7 +11,7 @@ function* signIn(action: SignIn) {
       yield put(authSuccess(response.data));
       yield put(push("/dashboard"));
     } else {
-      yield put(authFailure(response.data));
+      yield put(authFailure({ error: response.data.error }));
     }
   } catch (e) {
     yield put(authFailure({ error: e.response.data.error }));
