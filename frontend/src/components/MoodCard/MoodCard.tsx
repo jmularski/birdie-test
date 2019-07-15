@@ -17,11 +17,12 @@ export default function Timeline(props: Props) {
   const RenderTimeline = () => {
     return (
       <Grid container={true} direction="row">
-        <Grid item={true} xs={3}>
-          <MoodIcon mood={moods[0].mood} size={70} />
+        <Grid item={true} xs={1} />
+        <Grid item={true} xs={10}>
+          <Title>Current mood</Title>
         </Grid>
-        <Grid item={true} xs={9}>
-          <Title>Mood overview</Title>
+        <Grid item={true} xs={1}>
+          <MoodIcon mood={moods[0].mood} size={70} />
         </Grid>
       </Grid>
     );

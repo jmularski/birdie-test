@@ -30,7 +30,7 @@ export default function EventsGraph(props: Props) {
     const groupedEvents = countBy(humanReadableEvents, "event_type");
 
     const graphableEventsArray = [];
-    for (const key of Object.keys(groupedEvents)) {
+    for (const key of Object.keys(groupedEvents).slice(0, 5)) {
       graphableEventsArray.push({ x: key, y: groupedEvents[key] });
     }
 
@@ -42,7 +42,11 @@ export default function EventsGraph(props: Props) {
         justify="center"
       >
         <Grid item={true} xs={5}>
-          <VictoryPie data={graphableEventsArray} innerRadius={100} />
+          <VictoryPie
+            colorScale="warm"
+            data={graphableEventsArray}
+            innerRadius={100}
+          />
         </Grid>
         <Grid item={true} xs={7} style={{ textAlign: "center" }}>
           <Title>{events.length}</Title>
@@ -61,7 +65,7 @@ export default function EventsGraph(props: Props) {
   };
 
   return (
-    <Card raised={true}>
+    <Card>
       <CardContent>
         {isFetching ? <CircularProgress /> : renderErrorOrCard()}
       </CardContent>

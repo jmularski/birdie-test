@@ -19,11 +19,12 @@ interface Props {
 
 export default function EventsTable(props: Props) {
   const width = window.innerWidth;
+  const [searchText, setSearchText] = React.useState("");
 
   const columnWidths = [
     Math.floor(width / 10),
-    Math.floor((5 * width) / 10),
-    Math.floor((3 * width) / 10)
+    Math.floor((3 * width) / 10),
+    Math.floor((2 * width) / 10)
   ];
 
   const renderHeader = (columnIndex: number, style: CSSProperties) => {
@@ -45,6 +46,14 @@ export default function EventsTable(props: Props) {
     }
   };
 
+  const filterDataAndLength = () => {
+    const filteredData = props.events.filter(
+      event => event.event_type.indexOf(searchText.toLowerCase()) > -1
+    );
+
+    return { data: filteredData, length: filteredData.length };
+  };
+
   const Cell = ({
     columnIndex,
     rowIndex,
@@ -54,6 +63,8 @@ export default function EventsTable(props: Props) {
     rowIndex: number;
     style: CSSProperties;
   }) => {
+    const { data } = filterDataAndLength();
+
     if (rowIndex === 0) {
       return renderHeader(columnIndex, style);
     }
@@ -61,18 +72,20 @@ export default function EventsTable(props: Props) {
       case 0:
         return <div style={style}>{rowIndex}</div>;
       case 1:
-        let eventType = props.events[rowIndex].event_type;
+        let eventType = data[rowIndex].event_type;
         eventType = eventType.replace(/_/g, " ");
         eventType = eventType[0].toUpperCase() + eventType.slice(1);
         return <div style={style}>{eventType}</div>;
       case 2:
-        return <div style={style}>{props.events[rowIndex].timestamp}</div>;
+        return <div style={style}>{data[rowIndex].timestamp}</div>;
       default:
         return <div />;
     }
   };
 
   const renderErrorOrCard = () => {
+    const { length } = filterDataAndLength();
+
     return props.error !== "" ? (
       <ErrorText>{props.error}</ErrorText>
     ) : (
@@ -80,7 +93,7 @@ export default function EventsTable(props: Props) {
         columnWidth={(index: number) => columnWidths[index]}
         rowHeight={() => 50}
         columnCount={3}
-        rowCount={props.events.length}
+        rowCount={length}
         height={500}
         width={width}
       >
@@ -92,7 +105,12 @@ export default function EventsTable(props: Props) {
   return (
     <Card raised={true}>
       <CardHeader
-        action={<Input placeholder="Search through history" />}
+        action={
+          <Input
+            placeholder="Search through history"
+            onChange={event => setSearchText(event.target.value)}
+          />
+        }
         title="Visit history"
       />
       <CardContent>

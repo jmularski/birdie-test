@@ -4,7 +4,7 @@ import { StatisticsState } from "@App/store/statistics/types";
 import EventsTable from "../EventsTable";
 import { GlobalStyle } from "./style";
 import { Grid } from "@material-ui/core";
-import Timeline from "../Timeline";
+import MoodCard from "../MoodCard";
 import MoodGraph from "../MoodGraph";
 import EventsGraph from "../EventsGraph";
 
@@ -37,7 +37,7 @@ export default class Dashboard extends React.Component<Props, ComponentState> {
         >
           <Grid item={true} xs={2} />
           <Grid item={true} xs={8}>
-            <Timeline
+            <MoodCard
               isFetching={moods.isFetching}
               error={moods.error}
               moods={moods.moods}
