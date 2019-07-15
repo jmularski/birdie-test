@@ -1,7 +1,10 @@
 export enum statisticsActions {
   GET_HISTORY = "GET_HISTORY",
   GET_HISTORY_SUCCESS = "GET_HISTORY_SUCCESS",
-  GET_HISTORY_FAILURE = "GET_HISTORY_FAILURE"
+  GET_HISTORY_FAILURE = "GET_HISTORY_FAILURE",
+  GET_MOODS = "GET_MOODS",
+  GET_MOODS_SUCCESS = "GET_MOODS_SUCCESS",
+  GET_MOODS_FAILURE = "GET_MOODS_FAILURE"
 }
 
 export interface EventItem {
@@ -13,6 +16,15 @@ export interface Events {
   events: EventItem[];
 }
 
+export interface Mood {
+  mood: string;
+  timestamp: string;
+}
+
+export interface Moods {
+  moods: Mood[];
+}
+
 export interface Error {
   error: string;
 }
@@ -22,8 +34,14 @@ export interface EventsState extends Events {
   error: string;
 }
 
+export interface MoodsState extends Moods {
+  isFetching: boolean;
+  error: string;
+}
+
 export interface StatisticsState {
   events: EventsState;
+  moods: MoodsState;
 }
 
 export interface GetHistory {
@@ -40,7 +58,24 @@ export interface GetHistoryFailure {
   payload: Error;
 }
 
+export interface GetMoods {
+  type: typeof statisticsActions.GET_MOODS;
+}
+
+export interface GetMoodsSuccess {
+  type: typeof statisticsActions.GET_MOODS_SUCCESS;
+  payload: Moods;
+}
+
+export interface GetMoodsFailure {
+  type: typeof statisticsActions.GET_MOODS_FAILURE;
+  payload: Error;
+}
+
 export type StatisticsActionsTypes =
   | GetHistory
   | GetHistorySuccess
-  | GetHistoryFailure;
+  | GetHistoryFailure
+  | GetMoods
+  | GetMoodsSuccess
+  | GetMoodsFailure;

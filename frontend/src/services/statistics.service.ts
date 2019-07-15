@@ -1,7 +1,6 @@
 import { request } from "../helpers/api.handler";
 
 function getHistory(token: string) {
-  console.log(token);
   return request({
     url: "/stats/history",
     method: "GET",
@@ -9,6 +8,15 @@ function getHistory(token: string) {
   });
 }
 
+function getMoods(token: string) {
+  return request({
+    url: "/stats/mood",
+    method: "GET",
+    authHeader: token
+  });
+}
+
 export default {
-  getHistory
+  getHistory,
+  getMoods
 };
