@@ -37,4 +37,7 @@ export default class Event extends Model<Event> {
   @Unique
   @Column
   public care_recipient_id!: string;
+
+  @Column
+  public payload_as_text!: string;
 }
