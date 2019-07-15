@@ -7,6 +7,36 @@ export const statisticsController = Router();
 statisticsController.all("/*", TokenMiddleware);
 
 statisticsController.get(
+  "/mood",
+  async (_: Request, res: Response, next: NextFunction) => {
+    try {
+      const events_payload = await Event.findAll({
+        where: { care_recipient_id: res.locals.jwtToken.id },
+        attributes: ["payload_as_text"],
+        order: [["timestamp", "DESC"]]
+      });
+
+      let events: { mood?: string; timestamp: string }[] = [];
+
+      events_payload.forEach(payload => {
+        events.push(JSON.parse(payload.payload_as_text));
+      });
+
+      let moods = events.map(event => ({
+        mood: event.mood,
+        timestamp: event.timestamp
+      }));
+
+      moods = moods.filter(mood => mood.mood);
+
+      res.json({ moods });
+    } catch (e) {
+      next(new UserNotFound());
+    }
+  }
+);
+
+statisticsController.get(
   "/history",
   async (_: Request, res: Response, next: NextFunction) => {
     try {
