@@ -1,7 +1,7 @@
 import { Request, NextFunction, Response, RequestHandler } from "express";
 import { BadToken } from "../errors/token.error";
 import { ValidationError } from "../errors/validation.error";
-import { verify } from "jsonwebtoken";
+import { decryptToken } from "../helpers/token.helper";
 
 const tokenReader: RequestHandler = async (
   req: Request,
@@ -10,10 +10,7 @@ const tokenReader: RequestHandler = async (
 ) => {
   if (req.headers && req.headers["authorization"]) {
     try {
-      res.locals.jwtToken = await verify(
-        req.headers["authorization"],
-        "helloworld"
-      );
+      res.locals.jwtToken = await decryptToken(req.headers["authorization"]);
       next();
     } catch (e) {
       next(new BadToken());

@@ -49,6 +49,7 @@ export default class App extends React.Component<Props, ComponentState> {
             <Title>Login to the service</Title>
             <Subtitle>Use code we gave you to login to the service</Subtitle>
             <TextField
+              inputProps={{ "cy-testId": "codeField" }}
               error={error !== ""}
               label="Code"
               placeholder="Code"
@@ -72,10 +73,10 @@ export default class App extends React.Component<Props, ComponentState> {
   }
 
   private handleCodeChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    this.setState({ id: event.target.value });
+    this.setState({ id: event.target.value })
 
   private handleButtonClick = () => {
     const { id } = this.state;
     this.props.signIn({ id });
-  };
+  }
 }

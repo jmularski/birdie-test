@@ -1,9 +1,8 @@
 import { Router, Request, Response, NextFunction } from "express";
 import { UserNotFound } from "../errors/auth.error";
 import { ValidationError } from "../errors/validation.error";
-import * as jwt from "jsonwebtoken";
 import Event from "../models/event.model";
-import config from "../config";
+import { createToken } from "../helpers/token.helper";
 
 export const authController = Router();
 
@@ -20,9 +19,7 @@ authController.post(
     const user = await Event.findOne({ where: { care_recipient_id: id } });
 
     if (user) {
-      const token = jwt.sign({ id: user.care_recipient_id }, config.jwtSecret, {
-        expiresIn: "1y"
-      });
+      const token = createToken(user.care_recipient_id);
       res.json({ token });
     } else {
       next(new UserNotFound());

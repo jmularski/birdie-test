@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders correctly 1`] = `
+<div
+  className="sc-bdVaJa iSfbcZ"
+>
+  <div
+    className="MuiPaper-root MuiPaper-elevation1 MuiCard-root sc-bwzfXH drwwBR MuiPaper-rounded"
+  >
+    <h1
+      className="sc-ifAKCX glJhFp"
+    >
+      Login to the service
+    </h1>
+    <h3
+      className="sc-EHOje cEjmMk"
+    >
+      Use code we gave you to login to the service
+    </h3>
+    <div
+      className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
+    >
+      <label
+        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+        data-shrink={false}
+      >
+        Code
+      </label>
+      <div
+        className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+        onClick={[Function]}
+      >
+        <fieldset
+          aria-hidden={true}
+          className="PrivateNotchedOutline-root-85 MuiOutlinedInput-notchedOutline"
+          style={
+            Object {
+              "paddingLeft": 8,
+            }
+          }
+        >
+          <legend
+            className="PrivateNotchedOutline-legend-86"
+            style={
+              Object {
+                "width": 0.01,
+              }
+            }
+          >
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "&#8203;",
+                }
+              }
+            />
+          </legend>
+        </fieldset>
+        <input
+          aria-invalid={false}
+          className="MuiInputBase-input MuiOutlinedInput-input"
+          cy-testId="codeField"
+          disabled={false}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="Code"
+          required={false}
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <p
+      className="sc-bxivhb glrLzi"
+    >
+      
+    </p>
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Sign in
+      </span>
+    </button>
+  </div>
+</div>
+`;
