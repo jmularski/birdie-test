@@ -32,3 +32,10 @@ jobs:
           name: Run snapshot tests - frontend
           command: |
             npm test
+
+workflows:
+  version: 2
+  backend_and_frontend:
+    jobs:
+      - backend
+      - frontend
