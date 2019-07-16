@@ -1,7 +1,8 @@
 export enum authActions {
   SIGN_IN = "SIGN_IN",
   AUTHENTICATION_SUCCESS = "AUTHENTICATION_SUCCESS",
-  AUTHENTICATION_FAILURE = "AUTHENTICATION_FAILURE"
+  AUTHENTICATION_FAILURE = "AUTHENTICATION_FAILURE",
+  SIGN_OUT = "SIGN_OUT"
 }
 
 export interface Id {
@@ -37,4 +38,8 @@ interface AuthFailure {
   payload: Error;
 }
 
-export type AuthActionTypes = SignIn | AuthSuccess | AuthFailure;
+interface SignOut {
+  type: typeof authActions.SIGN_OUT;
+}
+
+export type AuthActionTypes = SignIn | AuthSuccess | AuthFailure | SignOut;

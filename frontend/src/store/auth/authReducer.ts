@@ -24,11 +24,14 @@ export const authReducer: Reducer<AuthState, AuthActionTypes> = (
         isFetching: false
       };
     case authActions.AUTHENTICATION_FAILURE:
-      console.log(action);
       return {
         ...state,
         error: action.payload.error,
         isFetching: false
+      };
+    case authActions.SIGN_OUT:
+      return {
+        ...initialState
       };
     default:
       return state;
