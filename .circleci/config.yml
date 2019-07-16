@@ -3,35 +3,35 @@ jobs:
   backend:
     working_directory: ~/birdie-test/backend
     docker:
-      - image: node:12.2.0-alpine
+      - image: circleci/node:8
     steps:
       - checkout
       - run:
           name: Install dependencies - backend
           command: |
-            npm install
+            cd backend/ && npm install
       - run:
           name: Run tests - backend
           command: |
-            npm test
+            cd backend/ && npm test
   frontend:
     working_directory: ~/birdie-test/frontend
     docker:
-      - image: node:12.2.0-alpine
+      - image: circleci/node:8
     steps:
       - checkout
       - run:
           name: Install dependencies - frontend
           command: |
-            npm install
+            cd frontend/ && npm install
       - run:
           name: Install react scripts - frontend
           command: |
-            npm install react-scripts@3.0.1 -g
+            cd frontend/ && sudo npm install react-scripts@3.0.1 -g
       - run:
           name: Run snapshot tests - frontend
           command: |
-            npm test
+            cd frontend/ && npm test
 
 workflows:
   version: 2
