@@ -13,6 +13,7 @@ export interface ComponentState {}
 export interface DispatchProps {
   getHistory: () => void;
   getMoods: () => void;
+  signOut: () => void;
 }
 
 type Props = StatisticsState & DispatchProps;
@@ -24,11 +25,11 @@ export default class Dashboard extends React.Component<Props, ComponentState> {
   }
 
   public render() {
-    const { events, moods } = this.props;
+    const { events, moods, signOut } = this.props;
     return (
       <>
         <GlobalStyle />
-        <Header />
+        <Header signOut={signOut}/>
         <Grid
           container={true}
           spacing={1}
@@ -36,7 +37,11 @@ export default class Dashboard extends React.Component<Props, ComponentState> {
           style={{ minHeight: "100vh" }}
         >
           <Grid item={true} xs={2} />
-          <Grid item={true} xs={8}>
+          <Grid 
+            item={true}
+            xs={8}
+            className="moodCard"  
+          >
             <MoodCard
               isFetching={moods.isFetching}
               error={moods.error}
@@ -45,14 +50,23 @@ export default class Dashboard extends React.Component<Props, ComponentState> {
           </Grid>
           <Grid item={true} xs={2} />
           <Grid item={true} xs={2} />
-          <Grid item={true} xs={4}>
+          <Grid 
+            item={true} 
+            xs={4}
+            className="moodGraph"
+          >
             <MoodGraph
               isFetching={moods.isFetching}
               error={moods.error}
               moods={moods.moods}
+
             />
           </Grid>
-          <Grid item={true} xs={4}>
+          <Grid 
+            item={true} 
+            xs={4}
+            className="eventsGraph"
+          >
             <EventsGraph
               isFetching={events.isFetching}
               error={events.error}
@@ -61,7 +75,11 @@ export default class Dashboard extends React.Component<Props, ComponentState> {
           </Grid>
           <Grid item={true} xs={2} />
           <Grid item={true} xs={2} />
-          <Grid item={true} xs={8}>
+          <Grid 
+            item={true} 
+            xs={8}
+            className="eventsTable"
+          >
             <EventsTable
               isFetching={events.isFetching}
               error={events.error}

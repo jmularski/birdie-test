@@ -20,3 +20,9 @@ export function authFailure(payload: Error): AuthActionTypes {
     payload
   };
 }
+
+export function signOut(): AuthActionTypes {
+  return {
+    type: authActions.SIGN_OUT
+  };
+}

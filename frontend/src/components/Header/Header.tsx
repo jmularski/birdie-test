@@ -3,15 +3,21 @@ import { AppBar, Button, Toolbar, Typography } from "@material-ui/core";
 
 export interface ComponentState {}
 
-export interface StyleProps {
+interface StyleProps {
   classes: {
     root: string;
     title: string;
   };
 }
 
+interface InheritedProps {
+  signOut: () => void;
+}
+
+type Props = StyleProps & InheritedProps;
+
 export default class Dashboard extends React.Component<
-  StyleProps,
+  Props,
   ComponentState
 > {
   public render() {
@@ -24,7 +30,11 @@ export default class Dashboard extends React.Component<
             <Typography variant="h6" className={classes.title}>
               Birdie
             </Typography>
-            <Button variant="outlined" color="secondary">
+            <Button 
+              variant="outlined" 
+              color="secondary"
+              onClick={() => this.props.signOut()}  
+            >
               Logout
             </Button>
           </Toolbar>

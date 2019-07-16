@@ -6,6 +6,7 @@
       "@store/*": ["src/store/*"]
     },
     "outDir": "build/dist",
+    "rootDir": "src",
     "module": "esnext",
     "target": "es5",
     "types": ["react", "jest", "node"],
@@ -31,5 +32,6 @@
     "webpack",
     "jest",
     "src/setupTests.ts",
+    "e2e"
   ]
 }

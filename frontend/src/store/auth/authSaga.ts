@@ -1,4 +1,4 @@
-import { call, put, takeEvery } from "redux-saga/effects";
+import { all, call, put, takeEvery } from "redux-saga/effects";
 import { push } from "connected-react-router";
 import { authActions, SignIn } from "./types";
 import { authSuccess, authFailure } from "./authActions";
@@ -18,8 +18,15 @@ function* signIn(action: SignIn) {
   }
 }
 
+function* signOut() {
+  yield put(push("/"));
+}
+
 function* authSaga() {
-  yield takeEvery(authActions.SIGN_IN, signIn);
+  yield all([
+    takeEvery(authActions.SIGN_IN, signIn),
+    takeEvery(authActions.SIGN_OUT, signOut)
+  ]);
 }
 
 export default authSaga;
