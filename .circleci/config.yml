@@ -1,0 +1,34 @@
+version: 2
+jobs:
+  backend:
+    working_directory: ~/backend
+    docker:
+      - image: node:12.2.0-alpine
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies - backend
+          command: |
+            npm install
+      - run:
+          name: Run tests - backend
+          command: |
+            npm test
+  frontend:
+    working_directory: ~/frontend
+    docker:
+      - image: node:12.2.0-alpine
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies - frontend
+          command: |
+            npm install
+      - run:
+          name: Install react scripts - frontend
+          command: |
+            npm install react-scripts@3.0.1 -g
+      - run:
+          name: Run snapshot tests - frontend
+          command: |
+            npm test
