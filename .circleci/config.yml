@@ -1,7 +1,7 @@
 version: 2
 jobs:
   backend:
-    working_directory: ~/backend
+    working_directory: ~/birdie-test/backend
     docker:
       - image: node:12.2.0-alpine
     steps:
@@ -15,7 +15,7 @@ jobs:
           command: |
             npm test
   frontend:
-    working_directory: ~/frontend
+    working_directory: ~/birdie-test/frontend
     docker:
       - image: node:12.2.0-alpine
     steps:
