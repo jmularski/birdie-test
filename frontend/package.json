@@ -23,7 +23,7 @@
   "scripts": {
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
-    "test": "jest",
+    "test": "jest -u",
     "eject": "react-scripts-ts eject",
     "create:component": "./node_modules/hygen/lib/bin.js component create",
     "create:store:item": "./node_modules/hygen/lib/bin.js store create"
