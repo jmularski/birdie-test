@@ -28,4 +28,4 @@ Developer test for startup Birdie - dashboard with basic data analysis built usi
 
 ## Hosted server
 
-Hosted server (in development mode, so you can see redux actions flow) - is hosted [here](159.65.86.152)
+Hosted server (in development mode, so you can see redux actions flow) - is hosted [here](http://159.65.86.152)
